@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# a build script for usage with ixis docker build system
+
 # start time
 date
 
