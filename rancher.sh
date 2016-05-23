@@ -18,7 +18,7 @@ sed -i -e "s/CIREPO2/$(echo $CI_REPO | sed 's/\//-/g')/g" rancher-compose.yml do
 sed -i -e "s/CIREPO/$CI_REPO/g" rancher-compose.yml docker-compose.yml
 
 # provision the environment within Rancher
-rancher-compose -p $ORGANISATION_NAME-$(basename $PWD)-$CI_BRANCH up -u -c -d --force-upgrade
+rancher-compose -p $(echo $CI_REPO | sed 's/\//-/g')-$CI_BRANCH up -u -c -d --force-upgrade
 
 # end time
 date
