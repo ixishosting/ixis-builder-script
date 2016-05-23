@@ -15,7 +15,7 @@ sed -i -e "s/REPO/$(basename $PWD)/g" rancher-compose.yml docker-compose.yml
 sed -i -e "s/ORGANISATION/$ORGANISATION_NAME/g" rancher-compose.yml docker-compose.yml
 
 # provision the environment within Rancher
-rancher-compose -p $ORGANISATION-$(basename $PWD)-$CI_BRANCH up -u -c -d --force-upgrade
+rancher-compose -p $ORGANISATION_NAME-$(basename $PWD)-$CI_BRANCH up -u -c -d --force-upgrade
 
 # end time
 date
