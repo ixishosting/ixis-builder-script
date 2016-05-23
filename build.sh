@@ -21,7 +21,7 @@ cp settings.php webapp/sites/default/
 tar -czf webapp.tar.gz webapp
 
 # deploy the archive to S3 (variables defined from .drone.yml using drone secrets)
-aws s3 cp webapp.tar.gz s3://$AWS_S3_BUCKET_NAME/$(basename $PWD)-$CI_BRANCH-latest.tar.gz --acl public-read --region $AWS_REGION
+aws s3 cp webapp.tar.gz s3://$AWS_S3_BUCKET_NAME/$ORGANISATION-$(basename $PWD)-$CI_BRANCH-latest.tar.gz --acl public-read --region $AWS_REGION
 
 # end time
 date
