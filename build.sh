@@ -25,8 +25,8 @@ cp .project.yml webapp/
 ### archive project code ready for deploy ###
 tar -czf webapp.tar.gz webapp
 
-### deploy the archive to S3 (variables defined from .drone.yml using drone secrets) ###
-aws s3 cp webapp.tar.gz s3://$AWS_S3_BUCKET_NAME/$(echo $CI_REPO | sed 's/\//-/g')-$CI_BRANCH-latest.tar.gz --acl public-read --region $AWS_REGION
+### deploy the archive to S3 ###
+aws s3 cp webapp.tar.gz s3://$AWS_S3_BUCKET_NAME/$CI_BRANCH-$(echo $CI_REPO |cut -d'/' -f2)-$(echo $CI_REPO |cut -d'/' -f1)-latest.tar.gz --acl public-read --region $AWS_REGION
 
 ### end time ###
 date
