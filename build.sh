@@ -20,7 +20,7 @@ fi
 cp settings.php webapp/sites/default/
 
 ### copy project .project.yml file into place ###
-cp .project.yml webapp/
+cp .container.yml webapp/
 
 ### archive project code ready for deploy ###
 tar -czf webapp.tar.gz webapp
