@@ -5,7 +5,7 @@
 ##
 
 ### start time ###
-date
+echo "Rancher deploy process started at $(date)"
 
 ### set the correct branch in the compose files ###
 sed -i -e "s/CIBRANCH/$CI_BRANCH/g" rancher-compose.yml docker-compose.yml
@@ -20,4 +20,4 @@ sed -i -e "s/CIREPO/$(echo $CI_REPO |cut -d'/' -f2)/g" rancher-compose.yml docke
 rancher-compose -p $CI_BRANCH-$(echo $CI_REPO |cut -d'/' -f2)-$(echo $CI_REPO |cut -d'/' -f1) up -u -c -d --force-upgrade
 
 ### end time ###
-date
+echo "Rancher deploy process completed at $(date)"

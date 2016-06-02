@@ -5,7 +5,7 @@
 ###
 
 ### start time ###
-date
+echo "Build process started at $(date)"
 
 ### if makefile detected proceed with drush make ###
 if [ -f make.yml ];
@@ -29,4 +29,4 @@ tar -czf webapp.tar.gz webapp
 aws s3 cp webapp.tar.gz s3://$AWS_S3_BUCKET_NAME/$CI_BRANCH-$(echo $CI_REPO |cut -d'/' -f2)-$(echo $CI_REPO |cut -d'/' -f1)-latest.tar.gz --acl public-read --region $AWS_REGION
 
 ### end time ###
-date
+echo "Build process completed at $(date)"
