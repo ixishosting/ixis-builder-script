@@ -8,10 +8,11 @@
 echo "Rancher deploy process started at $(date)"
 
 ### clone compose files ###
-git clone git@$GOGS_URL:$CI_REPO-compose.git compose-files
+echo "$GOGS_URL:$CI_REPO-compose"
 
 ### change into compose directory ###
 cd composer-files
+pwd
 
 ### set the correct branch in the compose files ###
 sed -i -e "s/CIBRANCH/$CI_BRANCH/g" rancher-compose.yml docker-compose.yml
