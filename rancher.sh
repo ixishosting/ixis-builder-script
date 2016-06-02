@@ -8,7 +8,7 @@
 echo "Rancher deploy process started at $(date)"
 
 ### clone compose files ###
-echo "$GOGS_URL:$CI_REPO-compose"
+git clone git@$GOGS_URL:$CI_REPO-compose.git compose-files
 
 ### change into compose directory ###
 cd composer-files
