@@ -4,6 +4,9 @@
 # a build/deployment script for usage with ixis docker build system
 ###
 
+### set lock status (5) ###
+bash -c "$(curl -sX PUT http://172.32.42.113:5001/branch/$(curl -s http://172.32.42.113:5001/branch/$CI_REPO/$CI_BRANCH)/state/5)"
+
 ### Drupal build process ###
 
 echo "Drupal build process started at $(date)"
@@ -51,3 +54,6 @@ sed -i -e "s/CIREPO/$(echo $CI_REPO |cut -d'/' -f2)/g" rancher-compose.yml docke
 rancher-compose -p $CI_BRANCH-$(echo $CI_REPO |cut -d'/' -f2)-$(echo $CI_REPO |cut -d'/' -f1) up -u -c -d --force-upgrade
 
 echo "Rancher deploy process completed at $(date)"
+
+### set lock status (0) ###
+bash -c "$(curl -sX PUT http://172.32.42.113:5001/branch/$(curl -s http://172.32.42.113:5001/branch/$CI_REPO/$CI_BRANCH)/state/0)"
